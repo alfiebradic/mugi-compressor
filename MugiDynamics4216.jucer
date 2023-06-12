@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="yuUqyg" name="MugiDynamics4216" projectType="audioplug" useAppConfig="0"
+              addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1">
+  <MAINGROUP id="Ccz8ge" name="MugiDynamics4216">
+    <GROUP id="{0A1A7069-D99B-3AC2-325F-C94E92DABC34}" name="Source">
+      <FILE id="BUjb0o" name="softclipper.h" compile="0" resource="0" file="Source/softclipper.h"/>
+      <FILE id="FCCPrO" name="detector.h" compile="0" resource="0" file="Source/detector.h"/>
+      <FILE id="s1twmh" name="filter.h" compile="0" resource="0" file="Source/filter.h"/>
+      <FILE id="bSUWQd" name="envelope.h" compile="0" resource="0" file="Source/envelope.h"/>
+      <FILE id="LKxedT" name="compressor.h" compile="0" resource="0" file="Source/compressor.h"/>
+      <GROUP id="{1667DEBC-D1F9-CDFE-56AF-32732A4FDCB5}" name="Images">
+        <FILE id="Mp6Q9P" name="blueL.png" compile="0" resource="1" file="Source/Images/blueL.png"/>
+        <FILE id="v85I9e" name="blueR.png" compile="0" resource="1" file="Source/Images/blueR.png"/>
+        <FILE id="ELmkQm" name="bypass.png" compile="0" resource="1" file="Source/Images/bypass.png"/>
+        <FILE id="b9i0dO" name="crossover_high.png" compile="0" resource="1"
+              file="Source/Images/crossover_high.png"/>
+        <FILE id="uYeabd" name="crossover_low.png" compile="0" resource="1"
+              file="Source/Images/crossover_low.png"/>
+        <FILE id="aGEkik" name="high_gain.png" compile="0" resource="1" file="Source/Images/high_gain.png"/>
+        <FILE id="hY8l6L" name="high_mode.png" compile="0" resource="1" file="Source/Images/high_mode.png"/>
+        <FILE id="pEY0pt" name="high_thresh.png" compile="0" resource="1" file="Source/Images/high_thresh.png"/>
+        <FILE id="HZf6Pn" name="input.png" compile="0" resource="1" file="Source/Images/input.png"/>
+        <FILE id="jB1r6P" name="low_gain.png" compile="0" resource="1" file="Source/Images/low_gain.png"/>
+        <FILE id="sz6zyN" name="low_mode.png" compile="0" resource="1" file="Source/Images/low_mode.png"/>
+        <FILE id="s7S7rQ" name="low_thresh.png" compile="0" resource="1" file="Source/Images/low_thresh.png"/>
+        <FILE id="ax0fgJ" name="mid_gain.png" compile="0" resource="1" file="Source/Images/mid_gain.png"/>
+        <FILE id="gqXPpT" name="mid_mode.png" compile="0" resource="1" file="Source/Images/mid_mode.png"/>
+        <FILE id="fYyMj1" name="mid_thresh.png" compile="0" resource="1" file="Source/Images/mid_thresh.png"/>
+        <FILE id="p47kgO" name="mix.png" compile="0" resource="1" file="Source/Images/mix.png"/>
+        <FILE id="G0CNCt" name="mugibackground.png" compile="0" resource="1"
+              file="Source/Images/mugibackground.png"/>
+        <FILE id="raF47S" name="mugibackground_sharp.png" compile="0" resource="1"
+              file="Source/Images/mugibackground_sharp.png"/>
+        <FILE id="FPUeU5" name="orangeL.png" compile="0" resource="1" file="Source/Images/orangeL.png"/>
+        <FILE id="pSyRyw" name="orangeR.png" compile="0" resource="1" file="Source/Images/orangeR.png"/>
+        <FILE id="XrP9NB" name="output.png" compile="0" resource="1" file="Source/Images/output.png"/>
+        <FILE id="OXTOzp" name="screw.png" compile="0" resource="1" file="Source/Images/screw.png"/>
+        <FILE id="WGehoU" name="vu_background.png" compile="0" resource="1"
+              file="Source/Images/vu_background.png"/>
+        <FILE id="jYK9UY" name="vu_covers.png" compile="0" resource="1" file="Source/Images/vu_covers.png"/>
+        <FILE id="KSo7KT" name="whiteL.png" compile="0" resource="1" file="Source/Images/whiteL.png"/>
+        <FILE id="JcoiBf" name="whiteR.png" compile="0" resource="1" file="Source/Images/whiteR.png"/>
+      </GROUP>
+      <FILE id="V9t0J8" name="FilmStrip.h" compile="0" resource="0" file="Source/FilmStrip.h"/>
+      <FILE id="VvwWMK" name="PluginProcessor.cpp" compile="1" resource="0"
+            file="Source/PluginProcessor.cpp"/>
+      <FILE id="lACenX" name="PluginProcessor.h" compile="0" resource="0"
+            file="Source/PluginProcessor.h"/>
+      <FILE id="TjAwOW" name="PluginEditor.cpp" compile="1" resource="0"
+            file="Source/PluginEditor.cpp"/>
+      <FILE id="VbPg3S" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
+    </GROUP>
+  </MAINGROUP>
+  <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1" JUCE_VST3_CAN_REPLACE_VST2="0"/>
+  <EXPORTFORMATS>
+    <XCODE_MAC targetFolder="Builds/MacOSX">
+      <CONFIGURATIONS>
+        <CONFIGURATION isDebug="1" name="Debug" targetName="MugiDynamics4216"/>
+        <CONFIGURATION isDebug="0" name="Release" targetName="MugiDynamics4216"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_audio_basics" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_core" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../../JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../../JUCE/modules"/>
+      </MODULEPATHS>
+    </XCODE_MAC>
+  </EXPORTFORMATS>
+  <MODULES>
+    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_plugin_client" showAllCode="1" useLocalCopy="0"
+            useGlobalPath="1"/>
+    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+  </MODULES>
+</JUCERPROJECT>
