@@ -72,6 +72,7 @@ public:
     
 private:
     
+    // Wet filters
     std::vector<LinkwitzRileyLPF> mLowLPF;
     std::vector<LinkwitzRileyHPF> mLowHPF;
     std::vector<LinkwitzRileyHPF> mLowHPFclean;
@@ -79,34 +80,33 @@ private:
     std::vector<LinkwitzRileyHPF> mHighHPF;
     std::vector<APF> mAPF_a;
     std::vector<APF> mAPF_b;
-    
+    // Dry filters
     std::vector<LinkwitzRileyLPF> mLowLPFDry;
     std::vector<LinkwitzRileyHPF> mLowHPFDry;
     std::vector<LinkwitzRileyLPF> mHighLPFDry;
     std::vector<LinkwitzRileyHPF> mHighHPFDry;
     std::vector<APF> mAPF_aDry;
     std::vector<APF> mAPF_bDry;
-    
+    // Sidechain
     std::vector<ButterworthHPF> mSC;
-    
+    // Envelopes
     std::vector<envelope> mEnvGR; // For VU
-    
     std::vector<envelope> mEnvLimitLow;
     std::vector<envelope> mEnvLimitMid;
     std::vector<envelope> mEnvLimitHigh;
-    
+    // Detectors
     std::vector<detector> mDetectorLow;
     std::vector<detector> mDetectorMid;
     std::vector<detector> mDetectorHigh;
-    
+    // Gain computers
     std::vector<compressor> mCompLow;
     std::vector<compressor> mCompMid;
     std::vector<compressor> mCompHigh;
-    
+    // Saturators
     std::vector<softclipper> mSatLow;
     std::vector<softclipper> mSatMid;
     std::vector<softclipper> mSatHigh;
-    
+    // Values for VU meters
     float mGRforVULowLeft;
     float mGRforVUMidLeft;
     float mGRforVUHighLeft;

@@ -73,8 +73,7 @@ public:
             auto angleDegrees = jmap(levelClamped, min, max, -47.0f, 47.0f);
             mAngleRadians = angleDegrees * (M_PI / 180);
         }
-        
-        
+
         setTransform(AffineTransform::rotation(mAngleRadians, mAnchorX, mAnchorY));
         g.drawImageAt(mNeedle, 0, 0, false);
 

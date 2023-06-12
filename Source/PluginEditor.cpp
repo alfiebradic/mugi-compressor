@@ -15,25 +15,25 @@ MugiDynamics4216AudioProcessorEditor::MugiDynamics4216AudioProcessorEditor (Mugi
 
 // LOAD FILMSTRIP IMAGES
 
+// Sorry, I had to use absolute path here.
+// Relative path broke on some files but not others. Lame!
+
 // Master
 stripInputGain(ImageFileFormat::loadFrom(File("/Users/alfiebradic/juce_projects/MugiDynamics4216/Source/Images/input.png")), 51),
 stripBypass(ImageFileFormat::loadFrom(File("/Users/alfiebradic/juce_projects/MugiDynamics4216/Source/Images/bypass.png")), 2),
 stripMix(ImageFileFormat::loadFrom(File("/Users/alfiebradic/juce_projects/MugiDynamics4216/Source/Images/mix.png")), 51),
 stripOutputGain(ImageFileFormat::loadFrom(File("/Users/alfiebradic/juce_projects/MugiDynamics4216/Source/Images/output.png")), 51),
 stripSidechain(ImageFileFormat::loadFrom(File("/Users/alfiebradic/juce_projects/MugiDynamics4216/Source/Images/screw.png")), 51),
-
 // Low
 stripLowThreshold(ImageFileFormat::loadFrom(File("/Users/alfiebradic/juce_projects/MugiDynamics4216/Source/Images/low_thresh.png")), 51),
 stripLowSwitch(ImageFileFormat::loadFrom(File("/Users/alfiebradic/juce_projects/MugiDynamics4216/Source/Images/low_mode.png")), 3),
 stripLowMakeupGain(ImageFileFormat::loadFrom(File("/Users/alfiebradic/juce_projects/MugiDynamics4216/Source/Images/low_gain.png")), 51),
 stripLowSaturation(ImageFileFormat::loadFrom(File("/Users/alfiebradic/juce_projects/MugiDynamics4216/Source/Images/screw.png")), 51),
-
 // Mid
 stripMidThreshold(ImageFileFormat::loadFrom(File("/Users/alfiebradic/juce_projects/MugiDynamics4216/Source/Images/mid_thresh.png")), 51),
 stripMidSwitch(ImageFileFormat::loadFrom(File("/Users/alfiebradic/juce_projects/MugiDynamics4216/Source/Images/mid_mode.png")), 3),
 stripMidMakeupGain(ImageFileFormat::loadFrom(File("/Users/alfiebradic/juce_projects/MugiDynamics4216/Source/Images/mid_gain.png")), 51),
 stripMidSaturation(ImageFileFormat::loadFrom(File("/Users/alfiebradic/juce_projects/MugiDynamics4216/Source/Images/screw.png")), 51),
-
 // High
 stripHighThreshold(ImageFileFormat::loadFrom(File("/Users/alfiebradic/juce_projects/MugiDynamics4216/Source/Images/high_thresh.png")), 51),
 stripHighSwitch(ImageFileFormat::loadFrom(File("/Users/alfiebradic/juce_projects/MugiDynamics4216/Source/Images/high_mode.png")), 3),
@@ -42,14 +42,9 @@ stripHighSaturation(ImageFileFormat::loadFrom(File("/Users/alfiebradic/juce_proj
 // Crossovers
 stripLowCrossover(ImageFileFormat::loadFrom(File("/Users/alfiebradic/juce_projects/MugiDynamics4216/Source/Images/crossover_low.png")), 51),
 stripHighCrossover(ImageFileFormat::loadFrom(File("/Users/alfiebradic/juce_projects/MugiDynamics4216/Source/Images/crossover_high.png")), 51),
-
-
 // VU assets
-
 VUBackground(ImageFileFormat::loadFrom(File("/Users/alfiebradic/juce_projects/MugiDynamics4216/Source/Images/vu_background.png"))),
-
 VUParent(ImageFileFormat::loadFrom(File("/Users/alfiebradic/juce_projects/MugiDynamics4216/Source/Images/vu_covers.png"))),
-
 // Left VU
 whiteL(ImageFileFormat::loadFrom(File("/Users/alfiebradic/juce_projects/MugiDynamics4216/Source/Images/whiteL.png")), false, 325, 155),
 blueL(ImageFileFormat::loadFrom(File("/Users/alfiebradic/juce_projects/MugiDynamics4216/Source/Images/blueL.png")), false, 325, 155),
@@ -59,24 +54,17 @@ whiteR(ImageFileFormat::loadFrom(File("/Users/alfiebradic/juce_projects/MugiDyna
 blueR(ImageFileFormat::loadFrom(File("/Users/alfiebradic/juce_projects/MugiDynamics4216/Source/Images/blueR.png")), true, 700, 155),
 orangeR(ImageFileFormat::loadFrom(File("/Users/alfiebradic/juce_projects/MugiDynamics4216/Source/Images/orangeR.png")), true, 700, 155)
 
-
-
-
 {
 
     setSize (1024, 576);
     startTimerHz(60);
-    
-    // Load single image assets
+
         background = juce::ImageFileFormat::loadFrom(juce::File("/Users/alfiebradic/juce_projects/MugiDynamics4216/Source/Images/mugibackground_sharp.png"));
     
         if (background.isValid()){
             backgroundComponent.setImage(background);
             addAndMakeVisible(&backgroundComponent);
         }
-    
-    
-    
 
     // ADD IMAGES
     addAndMakeVisible(VUBackground);
@@ -96,56 +84,47 @@ orangeR(ImageFileFormat::loadFrom(File("/Users/alfiebradic/juce_projects/MugiDyn
     addSlider(stripOutputGain);
     addSlider(stripMix);
     addSlider(stripSidechain);
-
     // Low
     addSlider(stripLowThreshold);
     addSlider(stripLowSwitch);
     addSlider(stripLowMakeupGain);
     addSlider(stripLowSaturation);
-    
     // Mid
     addSlider(stripMidThreshold);
     addSlider(stripMidSwitch);
     addSlider(stripMidMakeupGain);
     addSlider(stripMidSaturation);
-    
     // High
     addSlider(stripHighThreshold);
     addSlider(stripHighSwitch);
     addSlider(stripHighMakeupGain);
     addSlider(stripHighSaturation);
-    
     // Crossovers
     addSlider(stripLowCrossover);
     addSlider(stripHighCrossover);
     
     // ADD LISTENERS
-    
     // Master
     stripInputGain.addListener(this);
     stripBypass.addListener(this);
     stripMix.addListener(this);
     stripOutputGain.addListener(this);
     stripSidechain.addListener(this);
-    
     // Low
     stripLowThreshold.addListener(this);
     stripLowSwitch.addListener(this);
     stripLowMakeupGain.addListener(this);
     stripLowSaturation.addListener(this);
-
     // Mid
     stripMidThreshold.addListener(this);
     stripMidSwitch.addListener(this);
     stripMidMakeupGain.addListener(this);
     stripMidSaturation.addListener(this);
-    
     // High
     stripHighThreshold.addListener(this);
     stripHighSwitch.addListener(this);
     stripHighMakeupGain.addListener(this);
     stripHighSaturation.addListener(this);
-    
     // Crossovers
     stripLowCrossover.addListener(this);
     stripHighCrossover.addListener(this);
@@ -171,19 +150,12 @@ void MugiDynamics4216AudioProcessorEditor::timerCallback()
     blueR.repaint();
     orangeR.setLevel(audioProcessor.getVuValue(1,3));
     orangeR.repaint();
-
-    
-    
 }
 
 //==============================================================================
 void MugiDynamics4216AudioProcessorEditor::paint (juce::Graphics& g)
 {
-    g.fillAll(juce::Colours::darkgrey);
-    //247, 8
-    
     backgroundComponent.setBounds(0, 0, 1024, 576);
-
 }
 
 void MugiDynamics4216AudioProcessorEditor::resized()
@@ -195,29 +167,24 @@ void MugiDynamics4216AudioProcessorEditor::resized()
     stripMix.setBounds(943, 83, 45, 45);
     stripOutputGain.setBounds(810, 91, 83, 83);
     stripSidechain.setBounds(51, 98, 25, 25);
-    
     // Low
     stripLowThreshold.setBounds(96, 271, 117, 117);
     stripLowSwitch.setBounds(211, 437, 48, 48);
     stripLowMakeupGain.setBounds(21, 408, 74, 74);
     stripLowSaturation.setBounds(139, 505, 27, 27);
-
     // Mid
-    stripMidThreshold.setBounds(451, 321, 117, 117);
+    stripMidThreshold.setBounds(454, 320, 117, 117);
     stripMidSwitch.setBounds(625, 437, 48, 48);
     stripMidMakeupGain.setBounds(341, 410, 74, 74);
-    stripMidSaturation.setBounds(500, 505, 27, 27);
-    
+    stripMidSaturation.setBounds(498, 505, 27, 27);
     // High
     stripHighThreshold.setBounds(816, 276, 117, 117);
     stripHighSwitch.setBounds(928, 437, 48, 48);
     stripHighMakeupGain.setBounds(746, 409, 74, 74);
     stripHighSaturation.setBounds(860, 506, 27, 27);
-    
     // Crossovers
     stripLowCrossover.setBounds(320, 319, 49, 49);
-    stripHighCrossover.setBounds(650, 320, 49, 49);
-
+    stripHighCrossover.setBounds(651, 319, 49, 49);
     // VU stuff
     VUBackground.setBounds(0, 0, 1024, 756);
     whiteL.setBounds(332, 152, 120, 8);

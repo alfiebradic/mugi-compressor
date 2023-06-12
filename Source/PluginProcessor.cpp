@@ -320,15 +320,18 @@ juce::AudioProcessorEditor* MugiDynamics4216AudioProcessor::createEditor()
 //==============================================================================
 void MugiDynamics4216AudioProcessor::getStateInformation (juce::MemoryBlock& destData)
 {
-    // You should use this method to store your parameters in the memory block.
-    // You could do that either as raw data, or use the XML or ValueTree classes
-    // as intermediaries to make it easy to save and load complex data.
+    auto state = parameters.copyState();
+    std::unique_ptr<juce::XmlElement> xml (state.createXml());
+    copyXmlToBinary (*xml, destData);
 }
 
 void MugiDynamics4216AudioProcessor::setStateInformation (const void* data, int sizeInBytes)
 {
-    // You should use this method to restore your parameters from this memory block,
-    // whose contents will have been created by the getStateInformation() call.
+    std::unique_ptr<juce::XmlElement> xmlState (getXmlFromBinary (data, sizeInBytes));
+
+    if (xmlState.get() != nullptr)
+        if (xmlState->hasTagName (parameters.state.getType()))
+            parameters.replaceState (juce::ValueTree::fromXml (*xmlState));
 }
 
 //==============================================================================
@@ -484,7 +487,7 @@ juce::AudioProcessorValueTreeState::ParameterLayout MugiDynamics4216AudioProcess
                                                                              0.0f,
                                                                              skewFactorLow,
                                                                              false},
-                                                     200.0f),
+                                                     500.0f),
         std::make_unique<juce::AudioParameterFloat> (
                                                      juce::ParameterID("highcrossover", 1),
                                                      "High Crossover",
@@ -493,7 +496,7 @@ juce::AudioProcessorValueTreeState::ParameterLayout MugiDynamics4216AudioProcess
                                                                              0.0f,
                                                                              skewFactorHigh,
                                                                              false},
-                                                     5000.0f)
+                                                     7000.0f)
     };
 }
 
