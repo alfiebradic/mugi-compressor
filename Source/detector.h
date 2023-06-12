@@ -28,7 +28,7 @@ private:
     envelope mEnv1;
     envelope mEnv2;
     
-    const float mStage1_at = 0.0012;
+    const float mStage1_at = 0.0022; // 0.0012
     const float mStage1_rt = 0.078;
     const float mStage2_at = 0.1;
     const float mStage2_rt = 3.0;

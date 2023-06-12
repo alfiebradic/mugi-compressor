@@ -190,33 +190,33 @@ void MugiDynamics4216AudioProcessorEditor::resized()
 {
 
     // Master
-    stripInputGain.setBounds(134, 93, 77, 77);
+    stripInputGain.setBounds(129, 92, 83, 83);
     stripBypass.setBounds(87, 41, 45, 45);
-    stripMix.setBounds(943, 83, 41, 41);
-    stripOutputGain.setBounds(810, 93, 77, 77);
-    stripSidechain.setBounds(55, 100, 20, 20);
+    stripMix.setBounds(943, 83, 45, 45);
+    stripOutputGain.setBounds(810, 91, 83, 83);
+    stripSidechain.setBounds(51, 98, 25, 25);
     
     // Low
     stripLowThreshold.setBounds(96, 271, 117, 117);
     stripLowSwitch.setBounds(211, 437, 48, 48);
-    stripLowMakeupGain.setBounds(26, 408, 69, 69);
-    stripLowSaturation.setBounds(142, 509, 20, 20);
+    stripLowMakeupGain.setBounds(21, 408, 74, 74);
+    stripLowSaturation.setBounds(139, 505, 27, 27);
 
     // Mid
     stripMidThreshold.setBounds(451, 321, 117, 117);
     stripMidSwitch.setBounds(625, 437, 48, 48);
-    stripMidMakeupGain.setBounds(344, 406, 69, 69);
-    stripMidSaturation.setBounds(501, 505, 20, 20);
+    stripMidMakeupGain.setBounds(341, 410, 74, 74);
+    stripMidSaturation.setBounds(500, 505, 27, 27);
     
     // High
     stripHighThreshold.setBounds(816, 276, 117, 117);
     stripHighSwitch.setBounds(928, 437, 48, 48);
-    stripHighMakeupGain.setBounds(746, 409, 69, 69);
-    stripHighSaturation.setBounds(861, 509, 20, 20);
+    stripHighMakeupGain.setBounds(746, 409, 74, 74);
+    stripHighSaturation.setBounds(860, 506, 27, 27);
     
     // Crossovers
-    stripLowCrossover.setBounds(324, 323, 44, 44);
-    stripHighCrossover.setBounds(653, 323, 44, 44);
+    stripLowCrossover.setBounds(320, 319, 49, 49);
+    stripHighCrossover.setBounds(650, 320, 49, 49);
 
     // VU stuff
     VUBackground.setBounds(0, 0, 1024, 756);

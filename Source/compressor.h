@@ -43,7 +43,7 @@ public:
         if (setting == 1){
             float gDown = processDown(input, threshold, envDown, ratioDownInv);
             // Smooth GR value for VU meter
-            float GRraw = mEnvGRForVU.processPeak(gDown, 0.03, 0.2, Ts); // 0.0005 0.07
+            float GRraw = mEnvGRForVU.processPeak(gDown, 0.03, 0.1, Ts); // 0.0005 0.07
             gainReductionForVU = juce::Decibels::gainToDecibels(GRraw);
             // Mix
             mOutput = input * gDown * makeupGainRaw;
@@ -60,11 +60,13 @@ public:
             float GRraw = mEnvGRForVU.processPeak(gUp, 0.1, 0.5, Ts);
             gainReductionForVU = juce::Decibels::gainToDecibels(GRraw);
             // Mix
-            mOutput = outputOfUpwardsComp * gDown  * upGainOffset;
+            mOutput = outputOfUpwardsComp * gDown * upGainOffset * makeupGainRaw;
             return mOutput;
         }
         // BYPASS
         else {
+            float gZero = mEnvGRForVU.processPeak(0.f, 0.1, 0.2, Ts);
+            gainReductionForVU = gZero;
             return input;
         }
     }

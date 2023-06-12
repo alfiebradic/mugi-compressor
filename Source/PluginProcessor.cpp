@@ -285,11 +285,12 @@ void MugiDynamics4216AudioProcessor::processBlock (juce::AudioBuffer<float>& buf
             
             // Mixing
             if (bypass == 1){
-                float wetOutput = outLow - (outMid - outHigh) * outputGainRaw;
+                float wetOutput = (outLow - (outMid - outHigh)) * outputGainRaw;
                 float dryOutput = lowBandDry - (midBandDry - highBandDry);
                 output[sample] = dryWetMix * wetOutput + (1 - dryWetMix) * dryOutput;
             }
             else {
+                
                 output[sample] = input[sample];
             }
 
@@ -377,7 +378,7 @@ juce::AudioProcessorValueTreeState::ParameterLayout MugiDynamics4216AudioProcess
                                                      "Bypass",
                                                      0,
                                                      1,
-                                                     0),
+                                                     1),
         std::make_unique<juce::AudioParameterFloat> (
                                                      juce::ParameterID("mix", 1),
                                                      "Mix",
@@ -419,9 +420,9 @@ juce::AudioProcessorValueTreeState::ParameterLayout MugiDynamics4216AudioProcess
         std::make_unique<juce::AudioParameterFloat> ( // RANGE NEEDS ADJUSTING
                                                      juce::ParameterID("lowsaturation", 1),
                                                      "Low Saturation",
-                                                     1.0f,
-                                                     6.0f,
-                                                     1.0f),
+                                                     0.8f,
+                                                     5.0f,
+                                                     0.8f),
         // Mid
         std::make_unique<juce::AudioParameterFloat> (
                                                      juce::ParameterID("midthreshold", 1),
@@ -445,9 +446,9 @@ juce::AudioProcessorValueTreeState::ParameterLayout MugiDynamics4216AudioProcess
         std::make_unique<juce::AudioParameterFloat> ( // RANGE NEEDS ADJUSTING
                                                      juce::ParameterID("midsaturation", 1),
                                                      "Mid Saturation",
-                                                     1.0f,
-                                                     6.0f,
-                                                     1.0f),
+                                                     0.8f,
+                                                     5.0f,
+                                                     0.8f),
         // High
         std::make_unique<juce::AudioParameterFloat> (
                                                      juce::ParameterID("highthreshold", 1),
@@ -471,9 +472,9 @@ juce::AudioProcessorValueTreeState::ParameterLayout MugiDynamics4216AudioProcess
         std::make_unique<juce::AudioParameterFloat> (
                                                      juce::ParameterID("highsaturation", 1),
                                                      "High Saturation",
-                                                     1.0f,
-                                                     6.0f,
-                                                     1.0f),
+                                                     0.8f,
+                                                     5.0f,
+                                                     0.8f),
         // Crossovers
         std::make_unique<juce::AudioParameterFloat> (
                                                      juce::ParameterID("lowcrossover", 1),
