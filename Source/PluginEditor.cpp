@@ -162,10 +162,10 @@ void MugiDynamics4216AudioProcessorEditor::resized()
 {
 
     // Master
-    stripInputGain.setBounds(129, 92, 83, 83);
+    stripInputGain.setBounds(129, 91, 83, 83);
     stripBypass.setBounds(87, 41, 45, 45);
     stripMix.setBounds(943, 83, 45, 45);
-    stripOutputGain.setBounds(810, 91, 83, 83);
+    stripOutputGain.setBounds(810, 90, 83, 83);
     stripSidechain.setBounds(51, 98, 25, 25);
     // Low
     stripLowThreshold.setBounds(96, 271, 117, 117);
