@@ -169,12 +169,12 @@ void MugiDynamics4216AudioProcessorEditor::resized()
     stripSidechain.setBounds(51, 98, 25, 25);
     // Low
     stripLowThreshold.setBounds(96, 271, 117, 117);
-    stripLowSwitch.setBounds(211, 437, 48, 48);
+    stripLowSwitch.setBounds(211, 439, 48, 48);
     stripLowMakeupGain.setBounds(21, 408, 74, 74);
     stripLowSaturation.setBounds(139, 505, 27, 27);
     // Mid
     stripMidThreshold.setBounds(454, 320, 117, 117);
-    stripMidSwitch.setBounds(625, 437, 48, 48);
+    stripMidSwitch.setBounds(623, 436, 48, 48);
     stripMidMakeupGain.setBounds(341, 410, 74, 74);
     stripMidSaturation.setBounds(498, 505, 27, 27);
     // High
