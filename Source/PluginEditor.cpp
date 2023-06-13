@@ -178,7 +178,7 @@ void MugiDynamics4216AudioProcessorEditor::resized()
     stripMidMakeupGain.setBounds(341, 410, 74, 74);
     stripMidSaturation.setBounds(498, 505, 27, 27);
     // High
-    stripHighThreshold.setBounds(816, 276, 117, 117);
+    stripHighThreshold.setBounds(816, 273, 117, 117);
     stripHighSwitch.setBounds(928, 437, 48, 48);
     stripHighMakeupGain.setBounds(746, 409, 74, 74);
     stripHighSaturation.setBounds(860, 506, 27, 27);
