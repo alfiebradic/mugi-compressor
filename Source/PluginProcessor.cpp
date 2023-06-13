@@ -290,7 +290,6 @@ void MugiDynamics4216AudioProcessor::processBlock (juce::AudioBuffer<float>& buf
                 output[sample] = dryWetMix * wetOutput + (1 - dryWetMix) * dryOutput;
             }
             else {
-                
                 output[sample] = input[sample];
             }
 
@@ -420,7 +419,7 @@ juce::AudioProcessorValueTreeState::ParameterLayout MugiDynamics4216AudioProcess
                                                      -8.0f,
                                                      8.0f,
                                                      +0.0f),
-        std::make_unique<juce::AudioParameterFloat> ( // RANGE NEEDS ADJUSTING
+        std::make_unique<juce::AudioParameterFloat> (
                                                      juce::ParameterID("lowsaturation", 1),
                                                      "Low Saturation",
                                                      0.8f,
@@ -446,7 +445,7 @@ juce::AudioProcessorValueTreeState::ParameterLayout MugiDynamics4216AudioProcess
                                                      -8.0f,
                                                      8.0f,
                                                      +0.0f),
-        std::make_unique<juce::AudioParameterFloat> ( // RANGE NEEDS ADJUSTING
+        std::make_unique<juce::AudioParameterFloat> ( 
                                                      juce::ParameterID("midsaturation", 1),
                                                      "Mid Saturation",
                                                      0.8f,

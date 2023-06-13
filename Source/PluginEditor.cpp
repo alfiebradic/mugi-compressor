@@ -187,12 +187,12 @@ void MugiDynamics4216AudioProcessorEditor::resized()
     stripHighCrossover.setBounds(651, 319, 49, 49);
     // VU stuff
     VUBackground.setBounds(0, 0, 1024, 756);
-    whiteL.setBounds(332, 152, 120, 8);
-    blueL.setBounds(327, 152, 117, 7);
+    whiteL.setBounds(329, 152, 120, 8);
+    blueL.setBounds(325, 152, 117, 7);
     orangeL.setBounds(322, 152, 112, 7);
-    whiteR.setBounds(586, 152, 120, 8);
-    blueR.setBounds(591, 152, 116, 7);
-    orangeR.setBounds(596, 152, 112, 7);
+    whiteR.setBounds(576, 152, 120, 8);
+    blueR.setBounds(584, 152, 116, 7);
+    orangeR.setBounds(592, 152, 112, 7);
     VUParent.setBounds(0, 0, 1024, 756);
     
 }

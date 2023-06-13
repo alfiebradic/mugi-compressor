@@ -93,7 +93,7 @@ private:
     SliderAttachment mHighThresholdAttachment{audioProcessor.parameters, "highthreshold", stripHighThreshold};
     SliderAttachment mHighSwitchAttachment{audioProcessor.parameters, "highswitch", stripHighSwitch};
     SliderAttachment mHighMakeupGainAttachment{audioProcessor.parameters, "highmakeupgain", stripHighMakeupGain};
-    SliderAttachment mHighSaturationAttachment{audioProcessor.parameters, "highsaturation", stripMidSaturation};
+    SliderAttachment mHighSaturationAttachment{audioProcessor.parameters, "highsaturation", stripHighSaturation};
     
     // Crossovers
     SliderAttachment mLowCrossoverAttachment{audioProcessor.parameters, "lowcrossover", stripLowCrossover};
