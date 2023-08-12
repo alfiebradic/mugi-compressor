@@ -54,7 +54,7 @@ orangeR(ImageCache::getFromMemory(BinaryData::orangeR_png, BinaryData::orangeR_p
     setSize (1024, 576);
     startTimerHz(60);
 
-    background = juce::ImageCache::getFromMemory(BinaryData::mugibackground_sharp_png, BinaryData::mugibackground_sharp_pngSize);
+    background = juce::ImageCache::getFromMemory(BinaryData::mugibackground_v3_png, BinaryData::mugibackground_v3_pngSize);
     
         if (background.isValid()){
             backgroundComponent.setImage(background);

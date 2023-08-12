@@ -8,6 +8,9 @@
 
 namespace BinaryData
 {
+    extern const char*   mugibackground_v3_png;
+    const int            mugibackground_v3_pngSize = 761612;
+
     extern const char*   blueL_png;
     const int            blueL_pngSize = 805;
 
@@ -62,6 +65,9 @@ namespace BinaryData
     extern const char*   mugibackground_sharp_png;
     const int            mugibackground_sharp_pngSize = 800235;
 
+    extern const char*   mugibackground_v2_png;
+    const int            mugibackground_v2_pngSize = 739317;
+
     extern const char*   orangeL_png;
     const int            orangeL_pngSize = 793;
 
@@ -87,7 +93,7 @@ namespace BinaryData
     const int            whiteR_pngSize = 830;
 
     // Number of elements in the namedResourceList and originalFileNames arrays.
-    const int namedResourceListSize = 26;
+    const int namedResourceListSize = 28;
 
     // Points to the start of a list of resource names.
     extern const char* namedResourceList[];

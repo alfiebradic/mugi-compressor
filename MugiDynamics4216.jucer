@@ -10,6 +10,8 @@
       <FILE id="bSUWQd" name="envelope.h" compile="0" resource="0" file="Source/envelope.h"/>
       <FILE id="LKxedT" name="compressor.h" compile="0" resource="0" file="Source/compressor.h"/>
       <GROUP id="{1667DEBC-D1F9-CDFE-56AF-32732A4FDCB5}" name="Images">
+        <FILE id="Toq97a" name="mugibackground_v3.png" compile="0" resource="1"
+              file="Source/Images/mugibackground_v3.png"/>
         <FILE id="Mp6Q9P" name="blueL.png" compile="0" resource="1" file="Source/Images/blueL.png"/>
         <FILE id="v85I9e" name="blueR.png" compile="0" resource="1" file="Source/Images/blueR.png"/>
         <FILE id="ELmkQm" name="bypass.png" compile="0" resource="1" file="Source/Images/bypass.png"/>
@@ -32,6 +34,8 @@
               file="Source/Images/mugibackground.png"/>
         <FILE id="raF47S" name="mugibackground_sharp.png" compile="0" resource="1"
               file="Source/Images/mugibackground_sharp.png"/>
+        <FILE id="kEAEyi" name="mugibackground_v2.png" compile="0" resource="1"
+              file="Source/Images/mugibackground_v2.png"/>
         <FILE id="FPUeU5" name="orangeL.png" compile="0" resource="1" file="Source/Images/orangeL.png"/>
         <FILE id="pSyRyw" name="orangeR.png" compile="0" resource="1" file="Source/Images/orangeR.png"/>
         <FILE id="XrP9NB" name="output.png" compile="0" resource="1" file="Source/Images/output.png"/>
