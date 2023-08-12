@@ -77,7 +77,7 @@ private:
 
     envelope mEnvGRForVU;
     float mOutput;
-    const float ratioDown = 12;
+    const float ratioDown = 6;
     const float ratioDownInv = 1 / ratioDown;
     const float ratioUp = 10;
     const float headroom = 10.0f; // overcompression threshold offset

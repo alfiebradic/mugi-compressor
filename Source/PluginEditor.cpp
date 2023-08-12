@@ -14,52 +14,47 @@ MugiDynamics4216AudioProcessorEditor::MugiDynamics4216AudioProcessorEditor (Mugi
     : AudioProcessorEditor (&p), audioProcessor (p),
 
 // LOAD FILMSTRIP IMAGES
-
-// Sorry, I had to use absolute path here.
-// Relative path broke on some files but not others. Lame!
-
 // Master
-stripInputGain(ImageFileFormat::loadFrom(File("/Users/alfiebradic/juce_projects/MugiDynamics4216/Source/Images/input.png")), 51),
-stripBypass(ImageFileFormat::loadFrom(File("/Users/alfiebradic/juce_projects/MugiDynamics4216/Source/Images/bypass.png")), 2),
-stripMix(ImageFileFormat::loadFrom(File("/Users/alfiebradic/juce_projects/MugiDynamics4216/Source/Images/mix.png")), 51),
-stripOutputGain(ImageFileFormat::loadFrom(File("/Users/alfiebradic/juce_projects/MugiDynamics4216/Source/Images/output.png")), 51),
-stripSidechain(ImageFileFormat::loadFrom(File("/Users/alfiebradic/juce_projects/MugiDynamics4216/Source/Images/screw.png")), 51),
+stripInputGain(ImageCache::getFromMemory(BinaryData::input_png, BinaryData::input_pngSize), 51),
+stripBypass(ImageCache::getFromMemory(BinaryData::bypass_png, BinaryData::bypass_pngSize), 2),
+stripMix(ImageCache::getFromMemory(BinaryData::mix_png, BinaryData::mix_pngSize), 51),
+stripOutputGain(ImageCache::getFromMemory(BinaryData::output_png, BinaryData::output_pngSize), 51),
+stripSidechain(ImageCache::getFromMemory(BinaryData::screw_png, BinaryData::screw_pngSize), 51),
 // Low
-stripLowThreshold(ImageFileFormat::loadFrom(File("/Users/alfiebradic/juce_projects/MugiDynamics4216/Source/Images/low_thresh.png")), 51),
-stripLowSwitch(ImageFileFormat::loadFrom(File("/Users/alfiebradic/juce_projects/MugiDynamics4216/Source/Images/low_mode.png")), 3),
-stripLowMakeupGain(ImageFileFormat::loadFrom(File("/Users/alfiebradic/juce_projects/MugiDynamics4216/Source/Images/low_gain.png")), 51),
-stripLowSaturation(ImageFileFormat::loadFrom(File("/Users/alfiebradic/juce_projects/MugiDynamics4216/Source/Images/screw.png")), 51),
+stripLowThreshold(ImageCache::getFromMemory(BinaryData::low_thresh_png, BinaryData::low_thresh_pngSize), 51),
+stripLowSwitch(ImageCache::getFromMemory(BinaryData::low_mode_png, BinaryData::low_mode_pngSize), 3),
+stripLowMakeupGain(ImageCache::getFromMemory(BinaryData::low_gain_png, BinaryData::low_gain_pngSize), 51),
+stripLowSaturation(ImageCache::getFromMemory(BinaryData::screw_png, BinaryData::screw_pngSize), 51),
 // Mid
-stripMidThreshold(ImageFileFormat::loadFrom(File("/Users/alfiebradic/juce_projects/MugiDynamics4216/Source/Images/mid_thresh.png")), 51),
-stripMidSwitch(ImageFileFormat::loadFrom(File("/Users/alfiebradic/juce_projects/MugiDynamics4216/Source/Images/mid_mode.png")), 3),
-stripMidMakeupGain(ImageFileFormat::loadFrom(File("/Users/alfiebradic/juce_projects/MugiDynamics4216/Source/Images/mid_gain.png")), 51),
-stripMidSaturation(ImageFileFormat::loadFrom(File("/Users/alfiebradic/juce_projects/MugiDynamics4216/Source/Images/screw.png")), 51),
+stripMidThreshold(ImageCache::getFromMemory(BinaryData::mid_thresh_png, BinaryData::mid_thresh_pngSize), 51),
+stripMidSwitch(ImageCache::getFromMemory(BinaryData::mid_mode_png, BinaryData::mid_mode_pngSize), 3),
+stripMidMakeupGain(ImageCache::getFromMemory(BinaryData::mid_gain_png, BinaryData::mid_gain_pngSize), 51),
+stripMidSaturation(ImageCache::getFromMemory(BinaryData::screw_png, BinaryData::screw_pngSize), 51),
 // High
-stripHighThreshold(ImageFileFormat::loadFrom(File("/Users/alfiebradic/juce_projects/MugiDynamics4216/Source/Images/high_thresh.png")), 51),
-stripHighSwitch(ImageFileFormat::loadFrom(File("/Users/alfiebradic/juce_projects/MugiDynamics4216/Source/Images/high_mode.png")), 3),
-stripHighMakeupGain(ImageFileFormat::loadFrom(File("/Users/alfiebradic/juce_projects/MugiDynamics4216/Source/Images/high_gain.png")), 51),
-stripHighSaturation(ImageFileFormat::loadFrom(File("/Users/alfiebradic/juce_projects/MugiDynamics4216/Source/Images/screw.png")), 51),
+stripHighThreshold(ImageCache::getFromMemory(BinaryData::high_thresh_png, BinaryData::high_thresh_pngSize), 51),
+stripHighSwitch(ImageCache::getFromMemory(BinaryData::high_mode_png, BinaryData::high_mode_pngSize), 3),
+stripHighMakeupGain(ImageCache::getFromMemory(BinaryData::high_gain_png, BinaryData::high_gain_pngSize), 51),
+stripHighSaturation(ImageCache::getFromMemory(BinaryData::screw_png, BinaryData::screw_pngSize), 51),
 // Crossovers
-stripLowCrossover(ImageFileFormat::loadFrom(File("/Users/alfiebradic/juce_projects/MugiDynamics4216/Source/Images/crossover_low.png")), 51),
-stripHighCrossover(ImageFileFormat::loadFrom(File("/Users/alfiebradic/juce_projects/MugiDynamics4216/Source/Images/crossover_high.png")), 51),
+stripLowCrossover(ImageCache::getFromMemory(BinaryData::crossover_low_png, BinaryData::crossover_low_pngSize), 51),
+stripHighCrossover(ImageCache::getFromMemory(BinaryData::crossover_high_png, BinaryData::crossover_high_pngSize), 51),
 // VU assets
-VUBackground(ImageFileFormat::loadFrom(File("/Users/alfiebradic/juce_projects/MugiDynamics4216/Source/Images/vu_background.png"))),
-VUParent(ImageFileFormat::loadFrom(File("/Users/alfiebradic/juce_projects/MugiDynamics4216/Source/Images/vu_covers.png"))),
+VUBackground(ImageCache::getFromMemory(BinaryData::vu_background_png, BinaryData::vu_background_pngSize)),
+VUParent(ImageCache::getFromMemory(BinaryData::vu_covers_png, BinaryData::vu_covers_pngSize)),
 // Left VU
-whiteL(ImageFileFormat::loadFrom(File("/Users/alfiebradic/juce_projects/MugiDynamics4216/Source/Images/whiteL.png")), false, 325, 155),
-blueL(ImageFileFormat::loadFrom(File("/Users/alfiebradic/juce_projects/MugiDynamics4216/Source/Images/blueL.png")), false, 325, 155),
-orangeL(ImageFileFormat::loadFrom(File("/Users/alfiebradic/juce_projects/MugiDynamics4216/Source/Images/orangeL.png")), false, 325, 155),
+whiteL(ImageCache::getFromMemory(BinaryData::whiteL_png, BinaryData::whiteL_pngSize), false, 325, 155),
+blueL(ImageCache::getFromMemory(BinaryData::blueL_png, BinaryData::blueL_pngSize), false, 325, 155),
+orangeL(ImageCache::getFromMemory(BinaryData::orangeL_png, BinaryData::orangeL_pngSize), false, 325, 155),
 // Right VU
-whiteR(ImageFileFormat::loadFrom(File("/Users/alfiebradic/juce_projects/MugiDynamics4216/Source/Images/whiteR.png")), true, 700, 155),
-blueR(ImageFileFormat::loadFrom(File("/Users/alfiebradic/juce_projects/MugiDynamics4216/Source/Images/blueR.png")), true, 700, 155),
-orangeR(ImageFileFormat::loadFrom(File("/Users/alfiebradic/juce_projects/MugiDynamics4216/Source/Images/orangeR.png")), true, 700, 155)
+whiteR(ImageCache::getFromMemory(BinaryData::whiteR_png, BinaryData::whiteR_pngSize), true, 700, 155),
+blueR(ImageCache::getFromMemory(BinaryData::blueR_png, BinaryData::blueR_pngSize), true, 700, 155),
+orangeR(ImageCache::getFromMemory(BinaryData::orangeR_png, BinaryData::orangeR_pngSize), true, 700, 155)
 
 {
-
     setSize (1024, 576);
     startTimerHz(60);
 
-        background = juce::ImageFileFormat::loadFrom(juce::File("/Users/alfiebradic/juce_projects/MugiDynamics4216/Source/Images/mugibackground_sharp.png"));
+    background = juce::ImageCache::getFromMemory(BinaryData::mugibackground_sharp_png, BinaryData::mugibackground_sharp_pngSize);
     
         if (background.isValid()){
             backgroundComponent.setImage(background);

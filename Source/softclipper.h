@@ -7,8 +7,8 @@ class softclipper {
 public:
     float process (float x, float alpha){
         float y = (2 / M_PI) * atan(x * alpha);
-        float makeupGain = juce::Decibels::decibelsToGain(7.5f);
-        float makedownGain = juce::Decibels::decibelsToGain(-alpha * 1.7);
+        float makeupGain = juce::Decibels::decibelsToGain(11.0f);
+        float makedownGain = juce::Decibels::decibelsToGain(-alpha * 3);
         return y * makeupGain * makedownGain;
     }
 };
