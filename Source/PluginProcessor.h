@@ -107,12 +107,12 @@ private:
     std::vector<softclipper> mSatMid;
     std::vector<softclipper> mSatHigh;
     // Values for VU meters
-    float mGRforVULowLeft;
-    float mGRforVUMidLeft;
-    float mGRforVUHighLeft;
-    float mGRforVULowRight;
-    float mGRforVUMidRight;
-    float mGRforVUHighRight;;
+    std::atomic<float> mGRforVULowLeft;
+    std::atomic<float> mGRforVUMidLeft;
+    std::atomic<float> mGRforVUHighLeft;
+    std::atomic<float> mGRforVULowRight;
+    std::atomic<float> mGRforVUMidRight;
+    std::atomic<float> mGRforVUHighRight;;
 
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MugiDynamics4216AudioProcessor)

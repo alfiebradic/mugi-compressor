@@ -146,10 +146,6 @@ bool MugiDynamics4216AudioProcessor::isBusesLayoutSupported (const BusesLayout& 
     juce::ignoreUnused (layouts);
     return true;
   #else
-    // This is the place where you check if the layout is supported.
-    // In this template code we only support mono or stereo.
-    // Some plugin hosts, such as certain GarageBand versions, will only
-    // load plugins that support stereo bus layouts.
     if (layouts.getMainOutputChannelSet() != juce::AudioChannelSet::mono()
      && layouts.getMainOutputChannelSet() != juce::AudioChannelSet::stereo())
         return false;
@@ -178,7 +174,7 @@ void MugiDynamics4216AudioProcessor::processBlock (juce::AudioBuffer<float>& buf
     double Ts = 1 / Fs;
 
     const float limiter_at = 0.000001;
-    const float limiter_rt = 0.1;
+    const float limiter_rt = 0.05;
     
     // GET PARAM VALUES
     // Master
@@ -233,6 +229,10 @@ void MugiDynamics4216AudioProcessor::processBlock (juce::AudioBuffer<float>& buf
         mAPF_bDry[channel].updateCoefs(highCrossover, Fs);
         
         mSC[channel].updateCoefs(sidechainFreq, Fs);
+        
+        float headroom = 20.0; // TODO: Make headroom a user parameter
+        float lowerHeadroom = juce::Decibels::decibelsToGain(headroom);
+        float makeupHeadroom = juce::Decibels::decibelsToGain(-headroom);
        
         auto* input = buffer.getReadPointer (channel);
         auto* output = buffer.getWritePointer (channel);
@@ -241,65 +241,74 @@ void MugiDynamics4216AudioProcessor::processBlock (juce::AudioBuffer<float>& buf
   
             // Get input
             float in = input[sample] * inputGainRaw;
-            float inDry = input[sample];
-
-            // Split signal for saturated signals (high band sat comes later)
-            float inLow = mSatLow[channel].process(in, lowSaturation);
-            float inMid = mSatMid[channel].process(in, midSaturation);
-            float inMidClean = in;
+            float inDry = input[sample] * lowerHeadroom;
             
-            // Crossover filtering for saturated signals
-            float lowTemp1 = mLowLPF[channel].process(inLow);
-            float lowTemp2 = mAPF_a[channel].process(lowTemp1);
-            float lowBand = mAPF_b[channel].process(lowTemp2);
-            float lowBandSC = mSC[channel].process(lowBand);
-            
-            float midTemp = mLowHPF[channel].process(inMid);
-            float midTempClean = mLowHPFclean[channel].process(inMidClean);
-            float midBand = mHighLPF[channel].process(midTemp);
-            float highBandClean = mHighHPF[channel].process(midTempClean);
-            float highBand = mSatHigh[channel].process(highBandClean, highSaturation);
-            
-            // Crossover filtering for dry signals (preserves phase for wet/dry)
-            float lowTemp1Dry = mLowLPFDry[channel].process(inDry);
-            float lowTemp2Dry = mAPF_aDry[channel].process(lowTemp1Dry);
-            float lowBandDry = mAPF_bDry[channel].process(lowTemp2Dry);
-            float midTempDry = mLowHPFDry[channel].process(inDry);
-            float midBandDry = mHighLPFDry[channel].process(midTempDry);
-            float highBandDry = mHighHPFDry[channel].process(midTempDry);
-            
-            // Get downwards envelopes
-            float envLow = mDetectorLow[channel].detect(lowBandSC, Ts);
-            float envMid = mDetectorLow[channel].detect(midBand, Ts);
-            float envHigh = mDetectorLow[channel].detect(highBand, Ts);
-            
-            // Get upwards envelopes
-            float envLimitLow = mEnvLimitLow[channel].processPeak(lowBandSC, limiter_at, limiter_rt, Ts);
-            float envLimitMid = mEnvLimitMid[channel].processPeak(midBand, limiter_at, limiter_rt, Ts);
-            float envLimitHigh = mEnvLimitHigh[channel].processPeak(highBand, limiter_at, limiter_rt, Ts);
-
-            // Compress bands
-            float outLow = mCompLow[channel].computeGain(lowSwitch, lowBand, lowThreshold, envLow, envLimitLow, lowMakeupGainRaw, Ts);
-            float outMid = mCompMid[channel].computeGain(midSwitch, midBand, midThreshold, envMid, envLimitMid, midMakeupGainRaw, Ts);
-            float outHigh = mCompHigh[channel].computeGain(highSwitch, highBand, highThreshold, envHigh, envLimitHigh, highMakeupGainRaw, Ts);
-            
-            // Mixing
             if (bypass == 1){
+                
+                // Split signal for saturated signals (high band sat comes later)
+                float inLow = mSatLow[channel].process(in, lowSaturation) * lowerHeadroom;
+                float inMid = mSatMid[channel].process(in, midSaturation) * lowerHeadroom;
+                float inMidClean = in;
+                
+                // Crossover filtering for saturated signals
+                float lowTemp1 = mLowLPF[channel].process(inLow);
+                float lowTemp2 = mAPF_a[channel].process(lowTemp1);
+                float lowBand = mAPF_b[channel].process(lowTemp2);
+                float lowBandSC = mSC[channel].process(lowBand);
+                
+                float midTemp = mLowHPF[channel].process(inMid);
+                float midTempClean = mLowHPFclean[channel].process(inMidClean);
+                float midBand = mHighLPF[channel].process(midTemp);
+                float highBandClean = mHighHPF[channel].process(midTempClean);
+                float highBand = mSatHigh[channel].process(highBandClean, highSaturation) * lowerHeadroom;
+                
+                // Crossover filtering for dry signals (preserves phase for wet/dry)
+                // TODO: Simplify with just APFs
+                float lowTemp1Dry = mLowLPFDry[channel].process(inDry);
+                float lowTemp2Dry = mAPF_aDry[channel].process(lowTemp1Dry);
+                float lowBandDry = mAPF_bDry[channel].process(lowTemp2Dry);
+                float midTempDry = mLowHPFDry[channel].process(inDry);
+                float midBandDry = mHighLPFDry[channel].process(midTempDry);
+                float highBandDry = mHighHPFDry[channel].process(midTempDry);
+                
+                // Get downwards envelopes
+                float envLow = mDetectorLow[channel].detect(lowBandSC, Ts);
+                float envMid = mDetectorLow[channel].detect(midBand, Ts);
+                float envHigh = mDetectorLow[channel].detect(highBand, Ts);
+                
+                // Get upwards envelopes
+                float envLimitLow = mEnvLimitLow[channel].processPeak(lowBandSC, limiter_at, limiter_rt, Ts);
+                float envLimitMid = mEnvLimitMid[channel].processPeak(midBand, limiter_at, limiter_rt, Ts);
+                float envLimitHigh = mEnvLimitHigh[channel].processPeak(highBand, limiter_at, limiter_rt, Ts);
+
+                // Compress bands
+                float outLow = mCompLow[channel].computeGain(lowSwitch, lowBand, lowThreshold, envLow, envLimitLow, lowMakeupGainRaw, Ts);
+                float outMid = mCompMid[channel].computeGain(midSwitch, midBand, midThreshold, envMid, envLimitMid, midMakeupGainRaw, Ts);
+                float outHigh = mCompHigh[channel].computeGain(highSwitch, highBand, highThreshold, envHigh, envLimitHigh, highMakeupGainRaw, Ts);
+                
+                // Get GR data for VU meters
+                mGRforVULowLeft = mCompLow[0].gainReductionForVU;
+                mGRforVULowRight = mCompLow[1].gainReductionForVU;
+                mGRforVUMidLeft = mCompMid[0].gainReductionForVU;
+                mGRforVUMidRight = mCompMid[1].gainReductionForVU;
+                mGRforVUHighLeft = mCompHigh[0].gainReductionForVU;
+                mGRforVUHighRight = mCompHigh[1].gainReductionForVU;
+                    
+                // Mixing
                 float wetOutput = (outLow - (outMid - outHigh)) * outputGainRaw;
                 float dryOutput = lowBandDry - (midBandDry - highBandDry);
-                output[sample] = dryWetMix * wetOutput + (1 - dryWetMix) * dryOutput;
+                output[sample] = (dryWetMix * wetOutput + (1 - dryWetMix) * dryOutput) * makeupHeadroom;
+            
             }
-            else {
+            else { // Bypass
+                
+                // Turn off VU meters
+                mGRforVULowLeft = 0.f; mGRforVULowRight = 0.f;
+                mGRforVUMidLeft = 0.f; mGRforVUMidRight = 0.f;
+                mGRforVUHighLeft = 0.f; mGRforVUHighRight = 0.f;
+
                 output[sample] = input[sample];
             }
-
-            // Get GR data for VU meters
-            mGRforVULowLeft = mCompLow[0].gainReductionForVU;
-            mGRforVULowRight = mCompLow[1].gainReductionForVU;
-            mGRforVUMidLeft = mCompMid[0].gainReductionForVU;
-            mGRforVUMidRight = mCompMid[1].gainReductionForVU;
-            mGRforVUHighLeft = mCompHigh[0].gainReductionForVU;
-            mGRforVUHighRight = mCompHigh[1].gainReductionForVU;
         }
     }
 }

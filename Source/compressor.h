@@ -43,7 +43,7 @@ public:
         if (setting == 1){
             float gDown = processDown(input, threshold, envDown, ratioDownInv);
             // Smooth GR value for VU meter
-            float GRraw = mEnvGRForVU.processPeak(gDown, 0.03, 0.1, Ts); // 0.0005 0.07
+            float GRraw = mEnvGRForVU.processPeak(gDown, 0.03, 0.05, Ts); // 0.0005 0.07
             gainReductionForVU = juce::Decibels::gainToDecibels(GRraw);
             // Mix
             mOutput = input * gDown * makeupGainRaw;
@@ -71,16 +71,16 @@ public:
         }
     }
     
-    float gainReductionForVU = 1.0f;
+    float gainReductionForVU = 0.0f;
     
 private:
 
     envelope mEnvGRForVU;
     float mOutput;
-    const float ratioDown = 6;
+    const float ratioDown = 12;
     const float ratioDownInv = 1 / ratioDown;
-    const float ratioUp = 10;
-    const float headroom = 10.0f; // overcompression threshold offset
+    const float ratioUp = 16;
+    const float headroom = 32.0f; // overcompression threshold offset
     const float upGainOffset = juce::Decibels::decibelsToGain(-4.0f);
     
 };
