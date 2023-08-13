@@ -29,4 +29,4 @@ In upwards compression mode, an additional downwards compressor is placed in ser
 - UI: Waveform-style gain reduction graphics section
 - DSP: More advanced saturation algorithm
 - DSP: Anti-aliasing filters
-- DSP: Steep crossover filters DSP option
+- DSP: Steeper crossovers option
