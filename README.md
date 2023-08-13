@@ -1,6 +1,6 @@
 # Mugi Dynamics 4216 Up/Down Multi-band Compressor
 
-This is a WIP multi-band compressor plugin built in JUCE with original DSP and 3D graphics.
+This is a WIP multi-band upwards/downwards compressor plugin built in JUCE with original DSP and 3D graphics.
 
 ![mugi_ui.png](Misc/mugi_ui.png)
 
@@ -22,7 +22,7 @@ Each compressor section has a combination of a fast detector and slow detector r
 
 In upwards compression mode, an additional downwards compressor is placed in serial to prevent runaway gain instability. This overcompression feature provides additional shaping characteristics when pushed hard.
 
-# WIP feature roadmap
+# WIP feature roadmap.
 
 - UI: Preset manager
 - UI: Advanced controls (internal headroom, compression behaviour, stereo link)
