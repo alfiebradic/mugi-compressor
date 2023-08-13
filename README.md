@@ -6,7 +6,7 @@ This is a WIP multi-band upwards/downwards compressor plugin built in JUCE with 
 
 # 3 bands. 2 directions. 1 compressor.
 
-Mugi's interface is inspired by vintage racing aesthetics and centred around the gauge cluster-style gain reduction meters. Each band has its own colour-coded needle to provide intuitive metering at a glance.
+Mugi's interface is inspired by vintage racing aesthetics and centred around its gauge cluster-style gain reduction meters. Each band has its own colour-coded needle to provide intuitive metering at a glance.
 
 ![mugi_gif.gif](Misc/mugi_gif.gif)
 
