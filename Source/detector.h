@@ -28,9 +28,9 @@ private:
     envelope mEnv1;
     envelope mEnv2;
     
-    const float mStage1_at = 0.052; // 0.0012
-    const float mStage1_rt = 0.11; // 0.078
+    const float mStage1_at = 0.012; // 0.0012
+    const float mStage1_rt = 0.078; // 0.078
     const float mStage2_at = 0.2;
     const float mStage2_rt = 1.0;
-    const float mDetectorMix = 0.62; // 0.72
+    const float mDetectorMix = 0.67; // 0.72
 };

@@ -34,8 +34,6 @@
               file="Source/Images/mugibackground.png"/>
         <FILE id="raF47S" name="mugibackground_sharp.png" compile="0" resource="1"
               file="Source/Images/mugibackground_sharp.png"/>
-        <FILE id="kEAEyi" name="mugibackground_v2.png" compile="0" resource="1"
-              file="Source/Images/mugibackground_v2.png"/>
         <FILE id="FPUeU5" name="orangeL.png" compile="0" resource="1" file="Source/Images/orangeL.png"/>
         <FILE id="pSyRyw" name="orangeR.png" compile="0" resource="1" file="Source/Images/orangeR.png"/>
         <FILE id="XrP9NB" name="output.png" compile="0" resource="1" file="Source/Images/output.png"/>
