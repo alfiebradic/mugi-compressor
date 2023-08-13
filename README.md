@@ -1,4 +1,4 @@
-# Mugi Dynamics 4216 UpDown Multi-band Compressor
+# Mugi Dynamics 4216 Up/Down Multi-band Compressor
 
 This is a WIP multi-band compressor plugin built in JUCE with original DSP and 3D graphics.
 
