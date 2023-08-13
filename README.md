@@ -6,7 +6,7 @@ This is a WIP multi-band compressor plugin built in JUCE with original DSP and 3
 
 # 3 bands. 2 directions. 1 compressor.
 
-The interface is inspired by vintage racing aesthetics and centred around the gauge cluster-style gain reduction meters. Each band has its own colour-coded needle to provide intuitive metering at a glance.
+Mugi's interface is inspired by vintage racing aesthetics and centred around the gauge cluster-style gain reduction meters. Each band has its own colour-coded needle to provide intuitive metering at a glance.
 
 ![mugi_gif.gif](Misc/mugi_gif.gif)
 
