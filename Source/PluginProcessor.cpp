@@ -47,7 +47,7 @@ MugiDynamics4216AudioProcessor::MugiDynamics4216AudioProcessor()
     mEnvLimitLow.resize(2);
     mEnvLimitMid.resize(2);
     mEnvLimitHigh.resize(2);
-    mDetectorLow.resize(2);
+    mDetector.resize(2);
     mDetectorMid.resize(2);
     mDetectorHigh.resize(2);
     // Saturators
@@ -272,9 +272,9 @@ void MugiDynamics4216AudioProcessor::processBlock (juce::AudioBuffer<float>& buf
                 float highBandDry = mHighHPFDry[channel].process(midTempDry);
                 
                 // Get downwards envelopes
-                float envLow = mDetectorLow[channel].detect(lowBandSC, Ts);
-                float envMid = mDetectorLow[channel].detect(midBand, Ts);
-                float envHigh = mDetectorLow[channel].detect(highBand, Ts);
+                float envLow = mDetector[channel].detect(lowBandSC, Ts); // shared
+                float envMid = mDetector[channel].detect(midBand, Ts);
+                float envHigh = mDetector[channel].detect(highBand, Ts);
                 
                 // Get upwards envelopes
                 float envLimitLow = mEnvLimitLow[channel].processPeak(lowBandSC, limiter_at, limiter_rt, Ts);

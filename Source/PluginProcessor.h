@@ -95,7 +95,7 @@ private:
     std::vector<envelope> mEnvLimitMid;
     std::vector<envelope> mEnvLimitHigh;
     // Detectors
-    std::vector<detector> mDetectorLow;
+    std::vector<detector> mDetector;
     std::vector<detector> mDetectorMid;
     std::vector<detector> mDetectorHigh;
     // Gain computers
